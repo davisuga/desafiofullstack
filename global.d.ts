@@ -23,7 +23,9 @@ type QuestionResponse = {
   quota_max: number;
   quota_remaining: number;
 };
-
+type GraphQLApiResponse = {
+  questions: Item[];
+};
 type Item = {
   score: number;
   link: string;
