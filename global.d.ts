@@ -1,19 +1,19 @@
 type StackoverflowApiParams = {
-  order: "asc" | "desc";
-  sort: "activity" | "votes" | "creation" | "hot" | "week" | "created";
-  tagged: string;
-  page: number;
-  pagesize: number;
-  min: number;
-  max: number;
-  fromdate: number;
-  todate: number;
+  order?: "asc" | "desc";
+  sort?: "activity" | "votes" | "creation" | "hot" | "week" | "created";
+  tagged?: string;
+  page?: number;
+  pagesize?: number;
+  min?: number;
+  max?: number;
+  fromdate?: number;
+  todate?: number;
 };
 
 type GraphQlApiParams = {
-  score: number;
-  sort: "activity" | "votes" | "creation" | "hot" | "week" | "created";
-  limit: number;
+  score?: number;
+  sort?: "activity" | "votes" | "creation" | "hot" | "week" | "created";
+  limit?: number;
   tags: string;
 };
 
