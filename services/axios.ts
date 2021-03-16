@@ -9,6 +9,14 @@ interface Api extends AxiosInstance {
   ): Promise<R>;
 }
 const api = axios.create({
-  baseURL: "api.stackexchange.com/2.2/questions/",
+  baseURL: "http://api.stackexchange.com/2.2/",
+  params: {
+    site: "stackoverflow",
+  },
 }) as Api;
+
+api.interceptors.response.use(function (config) {
+  console.log("response url ", config.request.res.responseUrl);
+  return config;
+});
 export default api;
