@@ -10,7 +10,7 @@ const typeDefs = gql`
     user_type: String
     profile_image: String
     display_name: String!
-    link: String!
+    link: String
   }
   type Question {
     score: Int!
