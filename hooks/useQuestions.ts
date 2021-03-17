@@ -10,8 +10,6 @@ const useQuestions = (
   const [error, setError] = useState(null);
   const [questions, setQuestions] = useState([]);
 
-  useEffect(() => {}, []);
-
   const getQuestions = async (
     query = initialQuery,
     variables = initialVariables
