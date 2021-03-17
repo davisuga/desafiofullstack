@@ -3,6 +3,7 @@ import { extendTheme } from "@chakra-ui/react";
 import Button from "./components/button";
 import Input from "./components/input";
 import Box from "./components/box";
+import Text from "./components/text";
 
 const theme = extendTheme({
   colors: {
@@ -12,6 +13,7 @@ const theme = extendTheme({
     Box,
     Button,
     Input,
+    Text,
   },
 });
 console.log(`theme: `);
