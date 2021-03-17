@@ -21,6 +21,7 @@ export const GET_QUESTIONS = gql`
       title
       score
       is_answered
+      creation_date
       owner {
         display_name
         link
