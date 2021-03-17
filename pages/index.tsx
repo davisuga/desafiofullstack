@@ -7,7 +7,6 @@ import useQuestions from "../hooks/useQuestions";
 
 const Index: React.FC = () => {
   const { loading, getQuestions, questions, error } = useQuestions();
-  console.log(questions);
 
   const handleSearch = (variables: GraphQlApiParams) => {
     console.log("searching... ");
@@ -20,7 +19,7 @@ const Index: React.FC = () => {
   };
 
   return (
-    <Flex p={2} flexDir={"column"}>
+    <Flex p={5} flexDir={"column"}>
       <Text variant="title">StackOverflow</Text>
       <SearchBox loading={loading} onSearch={handleSearch} />
       {!error && !loading && questions && (
