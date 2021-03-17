@@ -1,28 +1,30 @@
 import React from "react";
 import { Flex } from "@chakra-ui/react";
-import { useQuery } from "@apollo/client";
-import { GET_JS_QUESTIONS } from "../services/graphql/queries";
+import { GET_QUESTIONS } from "../services/graphql/queries";
+import SearchBox from "../components/SearchBox";
+import QuestionList from "../components/QuestionList";
+import useQuestions from "../hooks/useQuestions";
 
 const Index: React.FC = () => {
-  const { error, loading, data } = useQuery<GraphQLApiResponse>(
-    GET_JS_QUESTIONS
-  );
-  console.log(data);
+  const { loading, getQuestions, questions, error } = useQuestions();
+  console.log(questions);
+
+  const handleSearch = (variables: GraphQlApiParams) => {
+    console.log("searching... ");
+    getQuestions(GET_QUESTIONS, variables);
+    if (error) {
+      console.log("Error: \n", error.graphQLErrors[0].extensions.code);
+
+      throw new Error(error.graphQLErrors[0].extensions.code);
+    }
+  };
+
   return (
     <Flex>
-      {!error &&
-        !loading &&
-        data &&
-        data.questions.map((question) => {
-          return (
-            <div>
-              <div>{question.title}</div>
-              <div>{question.score}</div>
-              <div>{question.is_answered}</div>
-              <div>{question.owner.display_name}</div>
-            </div>
-          );
-        })}
+      <SearchBox loading={loading} onSearch={handleSearch} />
+      {!error && !loading && questions && (
+        <QuestionList questions={questions} />
+      )}
     </Flex>
   );
 };

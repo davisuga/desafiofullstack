@@ -14,3 +14,19 @@ export const GET_JS_QUESTIONS = gql`
     }
   }
 `;
+export const GET_QUESTIONS = gql`
+  query Questions($tags: String!, $score: Int, $limit: Int, $sort: String) {
+    questions(tags: $tags, limit: $limit, score: $score, sort: $sort) {
+      tags
+      title
+      score
+      is_answered
+      owner {
+        display_name
+        link
+        reputation
+        profile_image
+      }
+    }
+  }
+`;

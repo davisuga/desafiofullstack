@@ -16,7 +16,7 @@ export default async function getStackoverflowQuestions({
     });
     const questions = response.data;
     const filteredQuestions = questions.items.filter(
-      (question) => question.score > score
+      (question) => question.score >= score
     );
     return filteredQuestions;
   } catch (error) {
