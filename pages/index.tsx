@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { GET_QUESTIONS } from "../services/graphql/queries";
 import SearchBox from "../components/SearchBox";
 import QuestionList from "../components/QuestionList";
@@ -20,7 +20,8 @@ const Index: React.FC = () => {
   };
 
   return (
-    <Flex>
+    <Flex p={2} flexDir={"column"}>
+      <Text variant="title">StackOverflow</Text>
       <SearchBox loading={loading} onSearch={handleSearch} />
       {!error && !loading && questions && (
         <QuestionList questions={questions} />
