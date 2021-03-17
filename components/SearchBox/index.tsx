@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Input from "../Input";
 import Button from "../Button";
-import CustomBox from "../CustomBox";
-import { FormControl, FormLabel } from "@chakra-ui/react";
+import Box from "../CustomBox";
+import { FormControl, FormLabel, Text } from "@chakra-ui/react";
 
 import { Select } from "@chakra-ui/react";
 
@@ -22,40 +22,47 @@ function SearchBox({ onSearch, loading }: SearchBoxProps) {
   };
 
   return (
-    <CustomBox bg="#E6E6E6" flexDir="row">
-      <h1>Buscar na API</h1>
+    <Box width={"100%"} p={3} bg="#E6E6E6" flexDir="row" borderRadius={5}>
+      <Text variant="subtitle">Buscar na API</Text>
+      <Box variant="flex-center" mb={2}>
+        <FormControl mr={5} isRequired>
+          <FormLabel>Tags</FormLabel>
 
-      <FormControl isRequired>
-        <FormLabel>Tags</FormLabel>
+          <Input
+            required
+            value={tags}
+            onChange={(event) => setTags(event.target.value)}
+          />
+        </FormControl>
+        <FormControl mr={5}>
+          <FormLabel>Limit</FormLabel>
+          <Input
+            value={limit}
+            onChange={(event) => setLimit(parseInt(event.target.value) || 0)}
+          />
+        </FormControl>
+        <FormControl mr={5}>
+          <FormLabel>Score</FormLabel>
+          <Input
+            value={score}
+            onChange={(event) => setScore(parseInt(event.target.value) || 0)}
+          />
+        </FormControl>
 
-        <Input
-          required
-          value={tags}
-          onChange={(event) => setTags(event.target.value)}
-        />
-      </FormControl>
-      <FormLabel>Limit</FormLabel>
-      <Input
-        value={limit}
-        onChange={(event) => setLimit(parseInt(event.target.value) || 0)}
-      />
-      <FormLabel>Score</FormLabel>
-      <Input
-        value={score}
-        onChange={(event) => setScore(parseInt(event.target.value) || 0)}
-      />
+        <FormControl mr={5}>
+          <FormLabel>Sort</FormLabel>
 
-      <FormLabel>Sort</FormLabel>
-
-      {/* @ts-ignore  */}
-      <Select onChange={(event) => setSort(event.target.value)}>
-        <option value="activity">activity</option>
-        <option value="votes">votes</option>
-        <option value="creation">creation</option>
-        <option value="hot">hot</option>
-        <option value="week">week</option>
-        <option value="created">created</option>
-      </Select>
+          {/* @ts-ignore  */}
+          <Select bg="white" onChange={(event) => setSort(event.target.value)}>
+            <option value="activity">activity</option>
+            <option value="votes">votes</option>
+            <option value="creation">creation</option>
+            <option value="hot">hot</option>
+            <option value="week">week</option>
+            <option value="created">created</option>
+          </Select>
+        </FormControl>
+      </Box>
       <Button
         isDisabled={tags.length < 1}
         isLoading={loading}
@@ -64,7 +71,7 @@ function SearchBox({ onSearch, loading }: SearchBoxProps) {
       >
         BUSCAR
       </Button>
-    </CustomBox>
+    </Box>
   );
 }
 
