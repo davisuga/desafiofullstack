@@ -26,6 +26,7 @@ const boxStyles: StyleConfig = {
       border: "lightgray 1px solid",
       marginTop: 2,
       borderRadius: 5,
+      boxShadow: "sm",
     },
     "question-content-wrapper": {
       display: "flex",
